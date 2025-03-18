@@ -2,7 +2,7 @@
 
 public class CheckingAccount implements HasMenu{
 	java.util.Scanner input = new java.util.Scanner(System.in);
-	double balance = 0.00;
+	double balance = 0d;
 
 	public CheckingAccount(){
 		balance = 0.00;
@@ -64,21 +64,10 @@ public class CheckingAccount implements HasMenu{
 
 	public void checkBalance(){
 		System.out.println("checking balance...");
-		System.out.println("current balance: $" + getBalance());
+		System.out.println("current balance: $" + getBalanceString());
 		System.out.println();
 	}
 
-	public void makeDeposit(){
-		System.out.println("making deposit...");
-		System.out.print("amount to deposit: ");
-		double deposit = getDouble();
-		setBalance(deposit);
-		System.out.println("new balance: $" + getBalance());
-		System.out.println();
-	}
-	public void makeWithdrawal(){
-		System.out.println("makeWithdrawal");
-	}
 	private double getDouble(){
 		String sResult = input.nextLine();
 		double result = 0d;
@@ -90,5 +79,24 @@ public class CheckingAccount implements HasMenu{
 			System.out.println("ERROR: Input must be a number. No letters or symbols allowed.");
 		}
 		return result;
+	}
+
+	public void makeDeposit(){
+		System.out.println("making deposit...");
+		System.out.print("amount to deposit: ");
+		double deposit = getDouble();
+		double total = balance + deposit;
+		setBalance(total);
+		System.out.println("new balance: $" + getBalanceString());
+		System.out.println();
+	}
+	public void makeWithdrawal(){
+		System.out.println("making withdrawal...");
+		System.out.print("amount to withdrawal: ");
+		double withdrawal = getDouble();
+		double total = balance - withdrawal;
+		setBalance(total);
+		System.out.println("new balance: $" + getBalanceString());
+		System.out.println();
 	}
 }
