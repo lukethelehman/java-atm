@@ -7,14 +7,14 @@ public class SavingsAccount extends CheckingAccount {
 		SavingsAccount s = new SavingsAccount();
 		s.setBalance(100);
 		s.setInterestRate(.05);
-		double interest = s.calcInterest();
-		System.out.println(interest);
+		s.calcInterest();
+		System.out.println(s.balance);
 
 	}
 
-	public double calcInterest() {
+	public void calcInterest() {
 		double interest = interestRate * balance;
-		return interest;
+		balance = balance + interest;
 	}
 
 	public void setInterestRate(double interestRate) {
