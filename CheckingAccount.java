@@ -12,12 +12,9 @@ public class CheckingAccount implements HasMenu{
 		this.balance = balance;
 	}
 
-	public static void main(String[] args){
-		CheckingAccount c = new CheckingAccount();
-		c.start();
-	}
-
 	public String menu(){
+		System.out.println("Account Menu");
+		System.out.println();
 		System.out.println("0) exit");
 		System.out.println("1) check balance");
 		System.out.println("2) make a deposit");
