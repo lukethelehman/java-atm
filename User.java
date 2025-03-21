@@ -6,9 +6,9 @@ public abstract class User implements HasMenu {
 
 	public boolean login() {
 		java.util.Scanner input = new java.util.Scanner(System.in);
-		System.out.println("username: ");
+		System.out.print("username: ");
 		String username = input.nextLine();
-		System.out.println("PIN: ");
+		System.out.print("PIN: ");
 		String pin = input.nextLine();
 
 		if (username.equals(this.username) && pin.equals(this.pin)){

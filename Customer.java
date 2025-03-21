@@ -7,7 +7,18 @@ public class Customer extends User {
 
 	public static void main(String[] args){
 		Customer c = new Customer();
+		boolean keepGoing = true;
+		while(keepGoing){
+			if (c.login()){
+				keepGoing = false;
+			}
+			else {
+				continue;
+			}
+		}
 		c.start();
+		
+			
 	}
 
 	public Customer(){
@@ -20,10 +31,10 @@ public class Customer extends User {
 		this.pin = pin;
 	}
 
-	public void start(){
-		String response = menu();
+	public void start(){	
 		boolean keepGoing = true;
 		while (keepGoing){
+			String response = menu();
  			if (response.equals("0")){
 				keepGoing = false;
 			}
@@ -50,7 +61,7 @@ public class Customer extends User {
 		System.out.println("2) manage savings account");
 		System.out.println("3) change PIN");
 		System.out.println();
-		System.out.println("please enter (0-3): ");
+		System.out.print("please enter (0-3): ");
 		String response = input.nextLine();
 		return response;
 	}
