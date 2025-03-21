@@ -56,11 +56,24 @@ public class Customer extends User {
 	}
 
 	public String getReport(){
-		String test = "test";
-		return test;
+		System.out.println("username: " + username);
+		System.out.println("pin: " + pin);
+		System.out.println("Savings: " + savings.getBalance());
+		System.out.println("Checking: " + checking.getBalance());
+		return username;
 	}
 
 	public void changePin(){
-		System.out.println("test");
+		System.out.print("new PIN: ");
+		String newPin = input.nextLine();
+		if (newPin.matches("^\\d{4}$")){
+			pin = newPin;
+			System.out.println("pin set to " + pin);
+		}
+		else {
+			System.out.println("ERROR: pin must be numeric and 4 digits");
+			pin = "0000";
+			System.out.println("pin set to " + pin);
+		}
 	}
 }
