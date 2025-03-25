@@ -66,12 +66,11 @@ public class Customer extends User {
 		return response;
 	}
 
-	public String getReport(){
+	public void getReport(){
 		System.out.println("username: " + username);
 		System.out.println("pin: " + pin);
 		System.out.println("Savings: " + savings.getBalance());
 		System.out.println("Checking: " + checking.getBalance());
-		return username;
 	}
 
 	public void changePin(){
