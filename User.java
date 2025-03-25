@@ -49,7 +49,7 @@ public abstract class User implements HasMenu {
 	public String getPin(){
 		return this.pin;
 	}
-	abstract String getReport();
+	abstract void getReport();
 }
    	
 
