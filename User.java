@@ -12,24 +12,19 @@ public abstract class User implements HasMenu {
 		String pin = input.nextLine();
 
 		if (username.equals(this.username) && pin.equals(this.pin)){
-			System.out.println("Login Successful");
 			return true;
 			
 		}
 		else {
-			System.out.println("Login Unsuccessful");
 			return false;
 		}
 	}
 
 	public boolean login(String username, String pin){
 		if (username.equals(this.username) && pin.equals(this.pin)){
-			System.out.println("Login Successful");
-			return true;
-			
+			return true;	
 		}
 		else {
-			System.out.println("Login Unsuccessful");
 			return false;
 		}
 	}
