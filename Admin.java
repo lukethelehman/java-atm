@@ -9,8 +9,8 @@ public class Admin extends User {
 
 	public String menu(){
 		java.util.Scanner input = new java.util.Scanner(System.in);
-		System.out.println("Admin Menu");
 		System.out.println();
+		System.out.println("Admin Menu");
 		System.out.println("0) exit");
 		System.out.println("1) full customer report");
 		System.out.println("2) add user");

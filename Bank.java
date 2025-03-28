@@ -12,8 +12,8 @@ public class Bank implements HasMenu{
 
 	public String menu(){
 		java.util.Scanner input = new java.util.Scanner(System.in);
-		System.out.println("Bank Menu");
 		System.out.println();
+		System.out.println("Bank Menu");
 		System.out.println("0) exit");
 		System.out.println("1) login as admin");
 		System.out.println("2) login as customer");
@@ -32,7 +32,11 @@ public class Bank implements HasMenu{
 			}
 			else if (response.equals("1")){
 				if(admin.login()){
+					System.out.println("login successfull");
 					this.adminStart();
+				}
+				else {
+					System.out.println("login unsuccessfull");
 				}
 			}
 			else if (response.equals("2")){
@@ -50,6 +54,35 @@ public class Bank implements HasMenu{
 		customers.add(new Customer("andy", "1111"));
 	}
 
+	public void fullCustomerReport(){
+		System.out.println();
+		System.out.println("Full Customer Report");
+		for (int i = 0; i < customers.size(); i++){
+			customers.get(i).getReport();
+		}
+	}
+
+	public void addUser(){
+		java.util.Scanner input = new java.util.Scanner(System.in);
+		System.out.println();
+		System.out.println("Add User");
+		System.out.print("Name: ");
+		String username = input.nextLine();
+		System.out.print("PIN: ");
+		String pin = input.nextLine();
+		Customer newCustomer = new Customer(username, pin);
+		customers.add(newCustomer);
+		System.out.println("user added");
+
+	}
+
+	public void applyInterest(){
+		for (int i = 0; i < customers.size(); i++){
+			customers.get(i).savings.calcInterest();
+		}
+		System.out.println("interest applied to each savings account");
+	}
+
 	public void adminStart(){
 		boolean keepGoing = true;
 		while(keepGoing){
@@ -58,13 +91,13 @@ public class Bank implements HasMenu{
 				keepGoing = false;
 			}
 			else if (response.equals("1")){
-				System.out.println("print customer report");
+				fullCustomerReport();
 			}
 			else if (response.equals("2")){
-				System.out.println("add user");
+				addUser();
 			}
 			else if (response.equals("3")){
-				System.out.println("apply interest");
+				applyInterest();
 			}
 			else {
 				System.out.println("ERROR: please enter an integer (0-3)");

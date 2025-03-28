@@ -54,8 +54,8 @@ public class Customer extends User {
 	}
 
 	public String menu(){
-		System.out.println("Customer Menu");
 		System.out.println();
+		System.out.println("Customer Menu");
 		System.out.println("0) exit");
 		System.out.println("1) manage checking account");
 		System.out.println("2) manage savings account");
@@ -67,10 +67,9 @@ public class Customer extends User {
 	}
 
 	public void getReport(){
-		System.out.println("username: " + username);
-		System.out.println("pin: " + pin);
-		System.out.println("Savings: " + savings.getBalance());
-		System.out.println("Checking: " + checking.getBalance());
+		System.out.print("user: " + username);
+		System.out.print(", savings: $" + savings.getBalanceString());
+		System.out.println(", checking: $" + checking.getBalanceString());
 	}
 
 	public void changePin(){
