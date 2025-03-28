@@ -1,15 +1,19 @@
 //Bank.java
+import java.util.*;
+import java.io.*;
 
 public class Bank implements HasMenu{
-	Admin admin = new Admin();
-	java.util.ArrayList<Customer> customers = new java.util.ArrayList<>();
-	
+	Admin admin = new Admin(); 
+	CustomerList customers = new CustomerList();	
+
 	public static void main(String[] args){
 		Bank b = new Bank();
-		b.loadSampleCustomers();
 		b.start();
+		b.saveCustomers();
 	}
-
+	public Bank(){
+		this.loadCustomers();
+}
 	public String menu(){
 		java.util.Scanner input = new java.util.Scanner(System.in);
 		System.out.println();
@@ -32,11 +36,11 @@ public class Bank implements HasMenu{
 			}
 			else if (response.equals("1")){
 				if(admin.login()){
-					System.out.println("login successfull");
+					System.out.println("login successful");
 					this.adminStart();
 				}
 				else {
-					System.out.println("login unsuccessfull");
+					System.out.println("login unsuccessful");
 				}
 			}
 			else if (response.equals("2")){
@@ -52,6 +56,32 @@ public class Bank implements HasMenu{
 		customers.add(new Customer("alice", "1111"));
 		customers.add(new Customer("lucas", "1111"));
 		customers.add(new Customer("andy", "1111"));
+	}
+
+	public void saveCustomers(){
+		try {
+			FileOutputStream fo = new FileOutputStream("customers.dat");
+			ObjectOutputStream obOut = new ObjectOutputStream(fo);
+			obOut.writeObject(customers);
+			obOut.close();
+			fo.close();
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void loadCustomers(){
+		try {
+			FileInputStream fIn = new FileInputStream("customers.dat");
+			ObjectInputStream obIn = new ObjectInputStream(fIn);
+			customers = (CustomerList) obIn.readObject();
+			obIn.close();
+			fIn.close();
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	public void fullCustomerReport(){
@@ -73,6 +103,7 @@ public class Bank implements HasMenu{
 		Customer newCustomer = new Customer(username, pin);
 		customers.add(newCustomer);
 		System.out.println("user added");
+		saveCustomers();
 
 	}
 
@@ -115,7 +146,7 @@ public class Bank implements HasMenu{
 		boolean login = false;	
 		for (int i = 0; i < customers.size(); i++){
 			if (customers.get(i).login(username, pin)){
-				System.out.println("login successfull");
+				System.out.println("login successful");
 				login = true;
 				currentCustomer = customers.get(i);
 				currentCustomer.start();
@@ -127,6 +158,9 @@ public class Bank implements HasMenu{
 		}
 	}	
 }
+
+class CustomerList extends ArrayList<Customer> implements Serializable {};
+
 
 
 

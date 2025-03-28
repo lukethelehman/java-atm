@@ -1,6 +1,7 @@
 //User.java 
+import java.io.*;
 
-public abstract class User implements HasMenu {
+public abstract class User implements HasMenu, Serializable {
 	String username;
 	String pin;
 

@@ -1,9 +1,10 @@
 //Customer.java 
+import java.io.*;
 
-public class Customer extends User {
-	java.util.Scanner input = new java.util.Scanner(System.in);
+public class Customer extends User implements Serializable {
 	CheckingAccount checking = new CheckingAccount();
 	SavingsAccount savings = new SavingsAccount();
+	final static long serialVersionUID = 2L;
 
 	public static void main(String[] args){
 		Customer c = new Customer();
@@ -54,6 +55,7 @@ public class Customer extends User {
 	}
 
 	public String menu(){
+		java.util.Scanner input = new java.util.Scanner(System.in);
 		System.out.println();
 		System.out.println("Customer Menu");
 		System.out.println("0) exit");
@@ -73,6 +75,7 @@ public class Customer extends User {
 	}
 
 	public void changePin(){
+		java.util.Scanner input = new java.util.Scanner(System.in);
 		System.out.print("new PIN: ");
 		String newPin = input.nextLine();
 		if (newPin.matches("^\\d{4}$")){

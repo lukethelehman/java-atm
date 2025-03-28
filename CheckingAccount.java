@@ -1,7 +1,7 @@
 //CheckingAccount.java
+import java.io.*;
 
-public class CheckingAccount implements HasMenu{
-	java.util.Scanner input = new java.util.Scanner(System.in);
+public class CheckingAccount implements HasMenu, Serializable {
 	double balance = 0d;
 
 	public CheckingAccount(){
@@ -13,6 +13,7 @@ public class CheckingAccount implements HasMenu{
 	}
 
 	public String menu(){
+		java.util.Scanner input = new java.util.Scanner(System.in);
 		System.out.println("Account Menu");
 		System.out.println();
 		System.out.println("0) exit");
@@ -66,6 +67,7 @@ public class CheckingAccount implements HasMenu{
 	}
 
 	private double getDouble(){
+		java.util.Scanner input = new java.util.Scanner(System.in);
 		String sResult = input.nextLine();
 		double result = 0d;
 		try {

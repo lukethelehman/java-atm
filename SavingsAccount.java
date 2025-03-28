@@ -1,6 +1,7 @@
 //SavingsAccount.java
+import java.io.*;
 
-public class SavingsAccount extends CheckingAccount {
+public class SavingsAccount extends CheckingAccount implements Serializable {
 	double interestRate = .05d;
 
 	public void calcInterest() {
