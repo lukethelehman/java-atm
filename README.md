@@ -1,12 +1,11 @@
 # java-atm
 ATM program written in Java for CS-121
-
+**UML**
+![Alt text](images/BankUML.png)
 **algorithm**
 
 *Bank*
 ```
-Bank
-
 main()
   create Bank object b
   b.start()
