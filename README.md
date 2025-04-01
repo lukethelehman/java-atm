@@ -1,7 +1,7 @@
 # java-atm
 ATM program written in Java for CS-121
 **UML**
-![Alt text](images/BankUML.png)
+![Alt text](images/Bank-UML.png)
 **algorithm**
 
 *Bank*
